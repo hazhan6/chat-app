@@ -1,0 +1,46 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-inner-container {
+  width: 40%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 2;
+  text-align: center;
+}
+
+.title {
+  color: beige;
+  margin: 10%;
+}
+
+.username-input-field {
+  padding: 12px 12px;
+  border-radius: 15px;
+  font-size: 24px;
+}
+
+.username-input-field:focus {
+  outline: none;
+}
+
+.enter-chat-button {
+  margin-top: 20px;
+  padding: 12px 12px;
+  font-size: 28px;
+  background: white;
+  color: #237437;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 15px;
+}
+
+.enter-chat-button:hover {
+  opacity: 80%;
+}
