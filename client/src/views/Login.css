@@ -12,11 +12,13 @@
   flex-direction: column;
   gap: 2;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 5%;
 }
 
 .title {
-  color: beige;
-  margin: 10%;
+  color: #313236;
+  margin: 5%;
 }
 
 .username-input-field {
@@ -31,10 +33,10 @@
 
 .enter-chat-button {
   margin-top: 20px;
-  padding: 12px 12px;
+  padding: 10px 10px;
   font-size: 28px;
-  background: white;
-  color: #237437;
+  background: #b6b6b8;
+  color: #313236;
   font-weight: 600;
   text-align: center;
   text-decoration: none;

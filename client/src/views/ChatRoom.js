@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ChatRoom.css";
+import UserListPage from "./UserList";
 
 const ChatRoom = ({ socket, roomId, userName }) => {
   const [newMessage, setNewMessage] = useState("");
@@ -9,6 +10,10 @@ const ChatRoom = ({ socket, roomId, userName }) => {
     socket.on("messageReturn", (data) => {
       setMessages((prev) => [...prev, data]);
     });
+
+    return () => {
+      socket.off("messageReturn");
+    };
   }, [socket]);
 
   const handleNewMessageChange = (event) => {
@@ -16,11 +21,16 @@ const ChatRoom = ({ socket, roomId, userName }) => {
   };
 
   const handleSendMessage = async () => {
+    let hour = new Date().getHours();
+    let minute = new Date().getMinutes();
     const messageContent = {
       userName: userName,
       message: newMessage,
       room: roomId,
-      date: new Date(Date.now).getHours + ":" + new Date(Date.now).getMinutes,
+      date:
+        (hour < 10 ? "0" + hour : hour) +
+        ":" +
+        (minute < 10 ? "0" + minute : minute),
     };
     await socket.emit("message", messageContent);
     setMessages((prev) => [...prev, messageContent]);
@@ -29,6 +39,9 @@ const ChatRoom = ({ socket, roomId, userName }) => {
 
   return (
     <div className="chat-room-container">
+      <div className="user-list-page">
+        <UserListPage socket={socket} />
+      </div>
       <div className="chat-room-inner-container">
         <div className="message-container-header">
           <div className="message-inner-container-header"></div>
@@ -51,7 +64,11 @@ const ChatRoom = ({ socket, roomId, userName }) => {
                   }`}
                 >
                   <div>{message.message}</div>
-                  <div className="message-sender">{message.userName}</div>
+                  <div className="message-sender">
+                    {(message.userName != userName ? message.userName : "") +
+                      " " +
+                      message.date}
+                  </div>
                 </div>
               </div>
             ))}

@@ -14,6 +14,7 @@ const Login = ({
   };
 
   const handleStartChat = () => {
+    socket.emit("login", userName);
     socket.emit("room", roomId);
     setIsUserLoggedIn(true);
   };
@@ -21,7 +22,10 @@ const Login = ({
   return (
     <div className="login-container">
       <div className="login-inner-container">
-        <h1 className="title">Welcome to Chat App</h1>
+        <div className="title">
+          <h1>Welcome to Chat App</h1>
+          <h4>Enter a username to get started</h4>
+        </div>
         <input
           type="text"
           placeholder="Username"
