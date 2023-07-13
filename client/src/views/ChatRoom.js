@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./ChatRoom.css";
 import UserListPage from "./UserList";
 
 const ChatRoom = ({ socket, roomId, userName }) => {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [chatHistory, setChatHistory] = useState([]);
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     socket.on("messageReturn", (data) => {
@@ -15,6 +17,20 @@ const ChatRoom = ({ socket, roomId, userName }) => {
       socket.off("messageReturn");
     };
   }, [socket]);
+
+  useEffect(() => {
+    socket.on("chatHistory", (data) => {
+      setChatHistory(data);
+    });
+
+    return () => {
+      socket.off("chatHistory");
+    };
+  }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, chatHistory]);
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
@@ -37,6 +53,10 @@ const ChatRoom = ({ socket, roomId, userName }) => {
     setNewMessage("");
   };
 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="chat-room-container">
       <div className="user-list-page">
@@ -48,6 +68,30 @@ const ChatRoom = ({ socket, roomId, userName }) => {
           <div className="message-inner-container-title">Chat Room</div>
         </div>
         <div className="message-container">
+          {chatHistory &&
+            chatHistory.map((message, index) => (
+              <div
+                className={`${
+                  message.userName === userName
+                    ? "message-sent-container"
+                    : "message-received"
+                }`}
+                key={index}
+              >
+                <div
+                  className={`${
+                    message.userName === userName ? "message-sent" : ""
+                  }`}
+                >
+                  <div>{message.message}</div>
+                  <div className="message-sender">
+                    {(message.userName !== userName ? message.userName : "") +
+                      " " +
+                      message.date}
+                  </div>
+                </div>
+              </div>
+            ))}
           {messages &&
             messages.map((message, index) => (
               <div
@@ -65,13 +109,14 @@ const ChatRoom = ({ socket, roomId, userName }) => {
                 >
                   <div>{message.message}</div>
                   <div className="message-sender">
-                    {(message.userName != userName ? message.userName : "") +
+                    {(message.userName !== userName ? message.userName : "") +
                       " " +
                       message.date}
                   </div>
                 </div>
               </div>
             ))}
+          <div ref={messagesEndRef} />
         </div>
         <div className="message-send-container">
           <input

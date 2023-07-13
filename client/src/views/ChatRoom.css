@@ -78,7 +78,7 @@
 
 .message-sent-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .message-sent {
@@ -96,7 +96,7 @@
 .message-sender {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: x-small;
   margin-top: 1%;
 }
