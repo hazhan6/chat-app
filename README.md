@@ -7,7 +7,7 @@ This is a real-time chat application that enables instant communication between 
 
 - Users can login to the application with username they enter.
 - Users can join the general chat room and communicate with other users.
-- Users can see the status of other users in the user list.
+- Users can see the status of other users in the user list and chat history.
 - Messages are automatically updated in real-time, allowing users to communicate instantly.
 
 ## Requirements
