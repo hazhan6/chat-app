@@ -1,4 +1,3 @@
-
 # Chat App
 
 This is a real-time chat application that enables instant communication between users. It is built using React, Node.js, and socket.io.
@@ -19,46 +18,63 @@ This is a real-time chat application that enables instant communication between 
 ## Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/hazhan6/chat-app.git
 
+   ```
+
 2. Go to the client directory:
+
    ```bash
    cd chat-app/client
 
+   ```
+
 3. Install the dependencies:
+
    ```bash
    npm install
 
+   ```
+
 4. Go to the server directory:
+
    ```bash
    cd ../server
 
+   ```
+
 5. Install the dependencies:
+
    ```bash
    npm install
 
+   ```
+
 6. Start the server:
+
    ```bash
    npm start
+
+   ```
 
 7. Start the client:
+
    ```bash
    npm start
 
+   ```
+
 8. Go to http://localhost:3000 in your browser and start using the chat application.
-
-
 
 ## Screenshots
 
 Here are some screenshots of the Chat App:
 
-![image](https://github.com/hazhan6/chat-app/assets/81991258/c40f22c7-4b97-4337-bd1c-64dcf4cacf34)
+![image](https://github.com/hazhan6/chat-app/assets/login_ss.png)
 
-![image](https://github.com/hazhan6/chat-app/assets/81991258/7e3b41c9-c89c-46fb-9479-f3e2387f162c)
-
-
+![image](https://github.com/hazhan6/chat-app/assets/chat_room_ss.png)
 
 ## Contributing
 
@@ -69,5 +85,3 @@ Create a new branch for adding new features, fixing bugs, or making improvements
 Commit your changes (git commit -am 'Add new feature').
 Push to your forked repository (git push origin new-feature).
 Open a Pull Request to this repository.
-
-
