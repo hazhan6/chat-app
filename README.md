@@ -72,9 +72,9 @@ This is a real-time chat application that enables instant communication between 
 
 Here are some screenshots of the Chat App:
 
-![image](https://github.com/hazhan6/chat-app/assets/login_ss.png)
+![image](./assets/login_ss.png)
 
-![image](https://github.com/hazhan6/chat-app/assets/chat_room_ss.png)
+![image](./assets/chat_room_ss.png)
 
 ## Contributing
 
